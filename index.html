@@ -139,16 +139,14 @@
 <!-- ===================== EDIT YOUR DETAILS HERE ===================== -->
 <script>
 const C = {
-  groom: { name:{ si:'[මනාලයාගේ නම]', en:"[Groom's Name]" },
-           parents:{ si:'[පියාගේ නම] මහතා සහ [මවගේ නම] මහත්මියගේ', en:"Mr. & Mrs. [Surname]" },
-           home:{ si:'[නගරය]', en:'[Hometown]' }, phone:'' },              // phone e.g. '+94771234567'
-  bride: { name:{ si:'[මනාලියගේ නම]', en:"[Bride's Name]" },
-           parents:{ si:'[පියාගේ නම] මහතා සහ [මවගේ නම] මහත්මියගේ', en:"Mr. & Mrs. [Surname]" },
-           home:{ si:'[නගරය]', en:'[Hometown]' }, phone:'' },
-  start: '2026-12-31T09:30:00+05:30',   // CHANGE: wedding start (Sri Lanka time) — drives the date, countdown & calendar
-  end:   '2026-12-31T15:30:00+05:30',   // CHANGE: wedding end
-  time:  { si:'[ආරම්භක වේලාව] සිට [අවසන් වේලාව] දක්වා', en:'[Start time] to [End time]' },
-  poruwa:{ si:'[වේලාව]', en:'[Time]' },
+  groom: { name:{ si:'දිමුතු', en:'Dimuthu' },
+           parents:{ si:'සිරිවර්ධන මහතා සහ මහත්මියගේ', en:'Mr. & Mrs. Siriwardhana' }, phone:'' },   // phone e.g. '+94771234567'
+  bride: { name:{ si:'නෙත්මි', en:'Nethmi' },
+           parents:{ si:'බණ්ඩාර මහතා සහ මහත්මියගේ', en:'Mr. & Mrs. Bandara' }, phone:'' },
+  start: '2027-01-28T09:30:00+05:30',   // wedding start (Sri Lanka time) — drives the date, countdown & calendar
+  end:   '2027-01-28T17:00:00+05:30',   // wedding end
+  time:  { si:'පෙ.ව. 9.30 සිට ප.ව. 5.00 දක්වා', en:'9.30 a.m. to 5.00 p.m.' },
+  poruwa:{ si:'පෙ.ව. 9.43', en:'9.43 a.m.' },
   event: { si:'විවාහ මංගල්‍යය සහ පෝරුවේ චාරිත්‍රය', en:'Wedding Reception & Poruwa Ceremony' },
   after: { si:'අනතුරුව පිළිගැනීම සහ දිවා භෝජන සංග්‍රහය', en:'Reception & Lunch to Follow' },
   venue: { name:{ si:'කැපිටල් රිසෝට් ඉන්', en:'Capital Resort Inn' }, address:{ si:'බිබිල පාර, හුලංදාව, මොණරාගල', en:'Bibila Road, Hulandawa, Monaragala' },
@@ -215,8 +213,8 @@ const C = {
     <svg class="top" viewBox="-50 0 100 50" aria-hidden="true"><g class="mandala"></g></svg>
     <h1 class="script rv" data-t="invited"></h1>
     <div class="parents rv">
-      <div><p data-t="g1"></p><p data-t="g2"></p><p data-t="g3"></p><p class="nm" data-t="groom"></p></div>
-      <div><p data-t="b1"></p><p data-t="b2"></p><p data-t="b3"></p><p class="nm" data-t="bride"></p></div>
+      <div><p data-t="g1"></p><p data-t="g2"></p><p class="nm" data-t="groom"></p></div>
+      <div><p data-t="b1"></p><p data-t="b2"></p><p class="nm" data-t="bride"></p></div>
     </div>
     <div class="guest rv"><span data-t="dear"></span><strong data-t="guestName"></strong><span data-t="guestLine"></span></div>
     <div class="rv">
@@ -419,8 +417,8 @@ const T = {
   open: both('ආරාධනය විවෘත කරන්න', 'Open Invitation'),
   pair: both(`${g.name.si} සහ ${b.name.si}`, `${g.name.en} & ${b.name.en}`),
   groom: g.name, bride: b.name,
-  g1: both(g.home.si, 'Beloved Son of'), g2: g.parents, g3: both('ආදරණීය පුත්', g.home.en),
-  b1: both(b.home.si, 'Beloved Daughter of'), b2: b.parents, b3: both('ආදරණීය දියණිය', b.home.en),
+  g1: both(g.parents.si, 'Beloved Son of'), g2: both('ආදරණීය පුත්', g.parents.en),
+  b1: both(b.parents.si, 'Beloved Daughter of'), b2: both('ආදරණීය දියණිය', b.parents.en),
   occasion: both('ඔවුන්ගේ විවාහ මංගල්‍යය නිමිත්තෙන්', 'On the joyous occasion of their marriage'),
   year: both(Y, Y), day: both(D, D),
   month: both(monthsSi[M], monthsEn[M]), weekday: both(daysSi[W], daysEn[W]),
