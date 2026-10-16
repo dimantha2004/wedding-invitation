@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="si">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;600;700;800&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Noto+Serif+Sinhala:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#b8892b; --copper:#a0522d; --maroon:#6e1423; --brown:#3b2414; --ivory:#fbf6ea; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { background:#ddd5c6; }
+  body { padding:12mm 0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { position:relative; width:210mm; height:297mm; margin:0 auto; overflow:hidden; background:var(--ivory); box-shadow:0 10px 40px rgba(60,40,20,.35); }
+  .art { position:absolute; inset:0; width:100%; height:100%; }
+
+  .content { position:absolute; top:51mm; left:24mm; right:24mm; bottom:86mm; display:flex; flex-direction:column; justify-content:space-between; align-items:center; text-align:center; color:var(--brown); outline:none; }
+  .si { font-family:'Abhaya Libre','Noto Serif Sinhala',serif; }
+  .en { font-family:'Cormorant Garamond',serif; }
+  .foil { background:linear-gradient(100deg,#7a5a18,#b8892b 25%,#e9cf7e 45%,#c79a3a 60%,#7a5a18 90%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  h1 { font:800 25pt/1.15 'Abhaya Libre','Noto Serif Sinhala',serif; }
+  .tag { font:600 8pt 'Cinzel',serif; letter-spacing:.4em; color:var(--copper); margin-top:.5mm; }
+  section { width:100%; }
+  h2 { color:var(--maroon); }
+  h2.si { font-size:14pt; font-weight:700; }
+  h2.en { font:600 10.5pt 'Cinzel',serif; letter-spacing:.32em; }
+  .divider { display:block; width:40mm; height:4mm; margin:.6mm auto 1.2mm; }
+  .divider.wide { width:72mm; height:7.2mm; margin:0 auto; }
+
+  .names { display:flex; align-items:center; justify-content:center; gap:4mm; color:var(--maroon); }
+  .names.si { font-size:20pt; font-weight:800; margin:.5mm 0 1.5mm; }
+  .names.en { font:29pt/1.1 'Great Vibes',cursive; margin:0 0 1mm; }
+  .heart { width:4.6mm; height:4.2mm; flex:none; }
+  .parents { display:grid; grid-template-columns:1fr 1fr; gap:10mm; font-size:10.5pt; line-height:1.4; }
+  .parents.en { font-size:11.5pt; line-height:1.3; }
+  .parents b { font-weight:700; color:var(--maroon); }
+  .msg { margin:2.2mm auto 0; max-width:150mm; font-size:11pt; line-height:1.5; }
+  .msg.en { font-size:12.5pt; font-style:italic; line-height:1.35; }
+
+  .details { display:grid; grid-template-columns:1fr auto 1fr; column-gap:7mm; width:100%; padding:2.6mm 2mm; border-block:.3mm solid rgba(184,137,43,.6); }
+  .details dl { display:grid; grid-template-columns:auto 1fr; gap:1mm 3mm; align-items:baseline; text-align:left; }
+  .details dt { color:var(--copper); }
+  .details dd { color:var(--maroon); font-weight:700; }
+  .details .si dt { font-size:10.5pt; } .details .si dd { font-size:12.5pt; }
+  .details .en dt { font:600 7.5pt 'Cinzel',serif; letter-spacing:.2em; } .details .en dd { font-size:13.5pt; }
+  .vline { width:.3mm; background:linear-gradient(transparent,var(--gold),transparent); }
+
+  @page { size:A4; margin:0; }
+  @media print { html, body { background:none; padding:0; } .page { box-shadow:none; margin:0; } }
+</style>
+</head>
+<body>
+<div class="page">
+<svg class="art" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a5a18"/><stop offset=".3" stop-color="#c9a13f"/><stop offset=".5" stop-color="#f1dc96"/><stop offset=".7" stop-color="#b8892b"/><stop offset="1" stop-color="#7a5a18"/>
+    </linearGradient>
+    <radialGradient id="paper" cx=".5" cy=".45" r=".8">
+      <stop offset="0" stop-color="#fffdf7"/><stop offset=".65" stop-color="#fbf5e6"/><stop offset="1" stop-color="#efe2c4"/>
+    </radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#fffdf7"/><stop offset=".6" stop-color="#fffaf0" stop-opacity=".85"/><stop offset="1" stop-color="#fffaf0" stop-opacity="0"/></radialGradient>
+    <filter id="grain" x="0" y="0" width="1" height="1">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="7"/>
+      <feColorMatrix values="0 0 0 0 .45  0 0 0 0 .33  0 0 0 0 .18  0 0 0 .55 0"/>
+    </filter>
+    <pattern id="band" x="5" y="5" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#f4e8cb"/>
+      <path d="M2,.5 3.5,2 2,3.5 .5,2Z" fill="none" stroke="#b8892b" stroke-width=".2"/>
+      <circle cx="2" cy="2" r=".45" fill="#6e1423"/>
+    </pattern>
+
+    <!-- shared ornaments (also used by the text dividers) -->
+    <g id="divider">
+      <path d="M5,6H47M73,6H115" stroke="#b8892b" stroke-width=".6"/>
+      <path d="M47,6 51,4 55,6 51,8ZM65,6 69,4 73,6 69,8Z" fill="#b8892b"/>
+      <circle cx="60" cy="6" r="2.6" fill="#6e1423" stroke="#b8892b" stroke-width=".7"/>
+      <circle cx="2.5" cy="6" r="1.1" fill="#b8892b"/><circle cx="117.5" cy="6" r="1.1" fill="#b8892b"/>
+    </g>
+    <g id="lotusdiv">
+      <path d="M8,14H78M122,14H192" stroke="#b8892b" stroke-width=".6"/>
+      <path d="M78,14C74,14 72,10 75,8.6 77,7.8 78.6,9.6 77,10.6M122,14C126,14 128,10 125,8.6 123,7.8 121.4,9.6 123,10.6" fill="none" stroke="#b8892b" stroke-width=".6"/>
+      <circle cx="5" cy="14" r="1.3" fill="#b8892b"/><circle cx="195" cy="14" r="1.3" fill="#b8892b"/>
+      <path d="M100,15C91,16 85,13 82,10 88,10 94,11.5 100,15ZM100,15C109,16 115,13 118,10 112,10 106,11.5 100,15Z" fill="#c9a13f"/>
+      <path d="M100,15C94,13 90,8 89,4 94,6 98,9.5 100,15ZM100,15C106,13 110,8 111,4 106,6 102,9.5 100,15Z" fill="#a0522d"/>
+      <path d="M100,15C96,10 96.5,4.5 100,1 103.5,4.5 104,10 100,15Z" fill="#6e1423" stroke="#c9a13f" stroke-width=".5"/>
+    </g>
+    <path id="heart" d="M12,21C5,15 1,11 1,6.5 1,3.2 3.5,1 6.5,1 9,1 11,2.6 12,4.6 13,2.6 15,1 17.5,1 20.5,1 23,3.2 23,6.5 23,11 19,15 12,21Z" fill="url(#gold)" stroke="#7a5a18" stroke-width=".6"/>
+
+    <!-- vine pieces -->
+    <g id="leaf"><path d="M0,0C1.6,-1.8 4.4,-1.8 6,0 4.4,1.8 1.6,1.8 0,0Z" fill="url(#gold)" stroke="#7a5a18" stroke-width=".12"/><path d="M.6,0H5.2" stroke="#7a5a18" stroke-width=".1"/></g>
+    <g id="flower">
+      <g fill="#7a1626" stroke="#c9a13f" stroke-width=".15">
+        <ellipse cy="-1.9" rx="1.25" ry="1.9"/><ellipse cy="-1.9" rx="1.25" ry="1.9" transform="rotate(72)"/><ellipse cy="-1.9" rx="1.25" ry="1.9" transform="rotate(144)"/><ellipse cy="-1.9" rx="1.25" ry="1.9" transform="rotate(216)"/><ellipse cy="-1.9" rx="1.25" ry="1.9" transform="rotate(288)"/>
+      </g>
+      <g fill="#a0522d"><ellipse cy="-1.1" rx=".6" ry="1" transform="rotate(36)"/><ellipse cy="-1.1" rx=".6" ry="1" transform="rotate(108)"/><ellipse cy="-1.1" rx=".6" ry="1" transform="rotate(180)"/><ellipse cy="-1.1" rx=".6" ry="1" transform="rotate(252)"/><ellipse cy="-1.1" rx=".6" ry="1" transform="rotate(324)"/></g>
+      <circle r=".75" fill="url(#gold)"/>
+    </g>
+    <g id="bud"><path d="M0,0C1.2,-1 1,-2.8 0,-3.6 -1,-2.8 -1.2,-1 0,0Z" fill="#7a1626" stroke="#c9a13f" stroke-width=".15"/><path d="M-1,0Q0,-1.4 1,0" fill="#b8892b"/></g>
+    <g id="vine" fill="none" stroke="#8a6420" stroke-width=".4">
+      <path d="M2,2C10,5 18,3 26,6 32,8 36,6 41,3"/><path d="M2,2C5,10 3,18 6,26 8,32 6,36 3,41"/>
+      <path d="M2,2C8,8 11,10 14,14"/>
+      <path d="M26,6C29,10 25,13 23,10M6,26C10,29 13,25 10,23" stroke-width=".3"/>
+      <use href="#leaf" transform="translate(9,4.3) rotate(-25)"/><use href="#leaf" transform="translate(17,3.8) rotate(20)"/><use href="#leaf" transform="translate(32,7.4) rotate(-35)"/><use href="#leaf" transform="translate(20,4.2) rotate(-150)"/>
+      <use href="#leaf" transform="translate(4.3,9) rotate(115)"/><use href="#leaf" transform="translate(3.8,17) rotate(70)"/><use href="#leaf" transform="translate(7.4,32) rotate(125)"/><use href="#leaf" transform="translate(4.2,20) rotate(-120)"/>
+      <use href="#leaf" transform="translate(9,9) rotate(10)"/><use href="#leaf" transform="translate(9,9) rotate(80)"/>
+      <use href="#flower" transform="translate(14.5,14.5) scale(1.25)"/><use href="#flower" transform="translate(26,6.3) scale(.8)"/><use href="#flower" transform="translate(6.3,26) scale(.8)"/>
+      <use href="#bud" transform="translate(41,3) rotate(60)"/><use href="#bud" transform="translate(3,41) rotate(210)"/>
+      <use href="#bud" transform="translate(23,10) rotate(150)"/><use href="#bud" transform="translate(10,23) rotate(-60)"/>
+    </g>
+    <g id="cornerk"><rect x="-2.6" y="-2.6" width="5.2" height="5.2" fill="#fbf3df" stroke="#b8892b" stroke-width=".4" transform="rotate(45)"/><circle r="1.1" fill="#6e1423"/></g>
+
+    <!-- couple -->
+    <linearGradient id="skin" x1="0" x2="1"><stop offset="0" stop-color="#9a6544"/><stop offset=".45" stop-color="#bb8662"/><stop offset="1" stop-color="#94603f"/></linearGradient>
+    <linearGradient id="coat" x1="0" x2="1"><stop offset="0" stop-color="#4a0c16"/><stop offset=".4" stop-color="#8c1d2f"/><stop offset=".7" stop-color="#6e1423"/><stop offset="1" stop-color="#420a13"/></linearGradient>
+    <linearGradient id="saree" x1="0" x2="1"><stop offset="0" stop-color="#8ea3ba"/><stop offset=".35" stop-color="#d3dee9"/><stop offset=".5" stop-color="#eef3f8"/><stop offset=".72" stop-color="#b6c6d7"/><stop offset="1" stop-color="#8aa0b8"/></linearGradient>
+    <linearGradient id="saree2" x1="0" x2="1"><stop offset="0" stop-color="#7f95ad"/><stop offset=".5" stop-color="#b3c3d4"/><stop offset="1" stop-color="#7a90a8"/></linearGradient>
+    <pattern id="sparkle" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r=".7" fill="#fff" opacity=".8"/><circle cx="0" cy="0" r=".45" fill="#f4e6b8"/><circle cx="9" cy="9" r=".45" fill="#f4e6b8"/></pattern>
+    <path id="skirt" d="M136,158C131,220 124,290 117,334Q151,342 185,334C178,290 171,220 166,158Z"/>
+    <path id="pallu" d="M164,110C184,140 192,200 194,260 195,300 192,325 190,334L172,334C176,280 174,200 160,128Z"/>
+    <g id="rose"><circle r="6" fill="#fffdf8" stroke="#d6cdb8" stroke-width=".6"/><path d="M-3,0.5Q-2,-3.4 1.6,-2.6 3.6,-1 2.6,1.6 .6,3.4 -1.4,2 -2.4,0 -.4,-1.2 1.2,-.6 1,.9" fill="none" stroke="#cfc4ab" stroke-width=".7"/></g>
+  </defs>
+
+  <!-- paper -->
+  <rect width="210" height="297" fill="url(#paper)"/>
+  <rect width="210" height="297" filter="url(#grain)" opacity=".2"/>
+
+  <!-- frame -->
+  <path d="M5,5H205V292H5ZM9,9V288H201V9Z" fill="url(#band)" fill-rule="evenodd"/>
+  <g fill="none" stroke="#b8892b"><rect x="5" y="5" width="200" height="287" stroke-width=".5"/><rect x="9" y="9" width="192" height="279" stroke-width=".5"/><rect x="10.3" y="10.3" width="189.4" height="276.4" stroke-width=".2"/></g>
+  <use href="#cornerk" x="7" y="7"/><use href="#cornerk" x="203" y="7"/><use href="#cornerk" x="7" y="290"/><use href="#cornerk" x="203" y="290"/>
+
+  <!-- corner vines -->
+  <use href="#vine" transform="translate(10.5,10.5)"/>
+  <use href="#vine" transform="translate(199.5,10.5) scale(-1,1)"/>
+  <use href="#vine" transform="translate(10.5,286.5) scale(1,-1)"/>
+  <use href="#vine" transform="translate(199.5,286.5) scale(-1,-1)"/>
+
+  <!-- mandalas (drawn by script below) -->
+  <g id="m-top"></g>
+  <g id="m-bot"></g>
+  <circle cx="105" cy="252" r="44" fill="url(#halo)"/>
+
+  <!-- bride & groom (local 240×340 units) -->
+  <g transform="translate(78,210.85) scale(.225)" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="118" cy="334" rx="86" ry="4.5" fill="#5a3a1a" opacity=".14"/>
+
+    <!-- groom -->
+    <path d="M58,250L60,328H76L78,258H82L84,328H100L104,250Z" fill="#f1e8d4" stroke="#bfa977" stroke-width=".8"/>
+    <path d="M80,262V326" stroke="#d8c9a4" stroke-width=".8"/>
+    <ellipse cx="67" cy="331" rx="11" ry="4" fill="#3a0a12"/><ellipse cx="93" cy="331" rx="11" ry="4" fill="#3a0a12"/>
+    <path d="M106,116C116,122 120,140 121,158L124,170 115,172 111,152Z" fill="url(#coat)" stroke="#3a0a12" stroke-width=".6"/>
+    <path d="M62,102Q79,108 96,102 106,105 108,114L111,160 114,256Q79,264 44,256L47,160 50,114Q52,105 62,102Z" fill="url(#coat)" stroke="#3a0a12" stroke-width=".7"/>
+    <path d="M79,108V259" stroke="#c9a13f" stroke-width="2.2"/>
+    <path d="M75,110V257M83,110V257" stroke="#e4c574" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+    <path d="M45,249Q79,257 113,249" fill="none" stroke="#c9a13f" stroke-width="3"/>
+    <path d="M45,244Q79,252 113,244" fill="none" stroke="#e4c574" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+    <g fill="url(#gold)"><circle cx="81.5" cy="120" r="1.8"/><circle cx="81.5" cy="132" r="1.8"/><circle cx="81.5" cy="144" r="1.8"/></g>
+    <path d="M48,156Q79,164 111,156L111,167Q79,175 48,167Z" fill="url(#gold)" stroke="#7a5a18" stroke-width=".5"/>
+    <path d="M50,161.5Q79,169.5 111,161.5" fill="none" stroke="#7a1626" stroke-width=".8" stroke-dasharray="2 2"/>
+    <path d="M50,114Q40,118 39,140L36,205H48L52,150Z" fill="url(#coat)" stroke="#3a0a12" stroke-width=".6"/>
+    <path d="M36,199H48V206H36Z" fill="url(#gold)"/>
+    <ellipse cx="42" cy="213" rx="5.5" ry="8" fill="url(#skin)" stroke="#7b4a30" stroke-width=".5"/>
+    <path d="M72,87V99Q79,103 86,99V87Z" fill="#9a6544"/>
+    <path d="M67,96H91L93,106Q79,111 65,106Z" fill="#5a0f1c" stroke="#c9a13f" stroke-width="1"/>
+    <ellipse cx="64.8" cy="74" rx="3" ry="5" fill="#a46e4c"/>
+    <ellipse cx="79" cy="72" rx="14.5" ry="18" fill="url(#skin)" stroke="#7b4a30" stroke-width=".5"/>
+    <path d="M64.5,60Q63,70 65.5,76L67.5,75Q66,67 68,60ZM93.5,60Q95,70 92.5,76L90.5,75Q92,67 90,60Z" fill="#241510"/>
+    <!-- Kandyan four-pointed hat -->
+    <path d="M63,57L64,46Q70,38 79,36 88,38 94,46L95,57Q79,53 63,57Z" fill="url(#coat)" stroke="#3a0a12" stroke-width=".6"/>
+    <path d="M64,47L57,40 66,43.5ZM94,47L101,40 92,43.5Z" fill="url(#gold)"/>
+    <path d="M79,36V30" stroke="#c9a13f" stroke-width="1.2"/><circle cx="79" cy="29" r="1.8" fill="url(#gold)"/>
+    <g fill="#e4c574"><circle cx="72" cy="47" r=".9"/><circle cx="79" cy="44" r=".9"/><circle cx="86" cy="47" r=".9"/><circle cx="79" cy="50" r=".9"/></g>
+    <path d="M62,56Q79,51 96,56L96,61Q79,56 62,61Z" fill="url(#gold)" stroke="#7a5a18" stroke-width=".4"/>
+    <g fill="none" stroke="#241510" stroke-width="1.1"><path d="M71,65.5Q74.5,63.8 78,65.3M83,65.3Q86.5,63.8 90,65.5"/><path d="M72,69.6Q75,67.8 78,69.6M83.5,69.6Q86.5,67.8 89.5,69.6" stroke-width=".9"/></g>
+    <circle cx="75.2" cy="69.9" r="1.1" fill="#1a0f0a"/><circle cx="86.7" cy="69.9" r="1.1" fill="#1a0f0a"/>
+    <path d="M82,70Q84.5,77 81.5,79 80,79.5 78.8,78.8" fill="none" stroke="#7b4a30" stroke-width=".8"/>
+    <path d="M75.5,82.3Q80.5,80.5 85.5,82.3 80.5,81.8 75.5,82.3Z" fill="#241510" stroke="#241510" stroke-width=".6"/>
+    <path d="M76,84.2Q80.5,87.3 85,84.2" fill="none" stroke="#6b2a2a" stroke-width="1"/>
+
+    <!-- bride -->
+    <use href="#pallu" fill="url(#saree2)" stroke="#6d8199" stroke-width=".6"/>
+    <use href="#pallu" fill="url(#sparkle)"/>
+    <path d="M190,334C192,325 195,300 194,260 192,200 184,140 164,110" fill="none" stroke="#c9a13f" stroke-width="1.6"/>
+    <use href="#skirt" fill="url(#saree)" stroke="#6d8199" stroke-width=".6"/>
+    <use href="#skirt" fill="url(#sparkle)"/>
+    <path d="M146,190L136,334M150,190L148,337M154,190L160,336M158,190L172,335" fill="none" stroke="#8fa3b9" stroke-width=".8" opacity=".7"/>
+    <path d="M117,331Q151,339 185,331" fill="none" stroke="#c9a13f" stroke-width="2.4"/>
+    <path d="M118,327Q151,335 184,327" fill="none" stroke="#f4f7fa" stroke-width="1" stroke-dasharray="2 1.5"/>
+    <path d="M133,110Q151,104 169,110L167,162Q151,168 135,162Z" fill="url(#saree)" stroke="#6d8199" stroke-width=".6"/>
+    <path d="M131,158Q151,165 171,158L176,174q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0q-3.06,4.5 -6.12,0Z" fill="#e6edf4" stroke="#8fa3b9" stroke-width=".6"/>
+    <path d="M131.5,165Q151,172 171.5,165" fill="none" stroke="#c9a13f" stroke-width=".9"/>
+    <path d="M145.5,96V109Q151,113 156.5,109V96Z" fill="#9a6544"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M141,106Q151,116 161,106" stroke="#c9a13f" stroke-width="1.2"/>
+      <path d="M139.5,108Q151,124 162.5,108" stroke="#e4c574" stroke-width="1.6" stroke-dasharray="1.2 .7"/>
+      <path d="M138,110Q151,133 164,110" stroke="#b8892b" stroke-width="1.8"/>
+      <path d="M136.5,112Q151,142 165.5,112" stroke="#d6b45a" stroke-width="1.5" stroke-dasharray="2 .8"/>
+    </g>
+    <circle cx="151" cy="121.5" r="1.5" fill="url(#gold)"/>
+    <circle cx="151" cy="128" r="2.6" fill="url(#gold)" stroke="#7a5a18" stroke-width=".4"/><circle cx="151" cy="128" r="1" fill="#8c1d2f"/>
+    <ellipse cx="134" cy="118" rx="8.5" ry="8" fill="url(#saree)" stroke="#6d8199" stroke-width=".6"/>
+    <ellipse cx="168" cy="118" rx="8.5" ry="8" fill="url(#saree)" stroke="#6d8199" stroke-width=".6"/>
+    <path d="M162,108Q170,103 177,111 173,115 169,113 166,117 162,115Z" fill="#eef3f8" stroke="#8fa3b9" stroke-width=".5"/>
+    <path d="M128,124C121,142 122,164 132,176 137,181 143,183 147,183L147,177C141,176 136,172 133,165 130,154 132,140 135,126Z" fill="url(#skin)" stroke="#7b4a30" stroke-width=".5"/>
+    <path d="M174,124C181,142 180,164 170,176 165,181 159,183 155,183L155,177C161,176 166,172 169,165 172,154 170,140 167,126Z" fill="url(#skin)" stroke="#7b4a30" stroke-width=".5"/>
+    <path d="M139.5,174.5L138,181.5M141.5,175.5L140.5,182.5M162.5,174.5L164,181.5M160.5,175.5L161.5,182.5" stroke="#c9a13f" stroke-width="1.1"/>
+    <!-- bouquet -->
+    <path d="M149,196C147,210 143,220 145,232M153,196C156,208 160,216 158,228" fill="none" stroke="#f4f7fa" stroke-width="1.8"/>
+    <path d="M149,196C147,210 143,220 145,232M153,196C156,208 160,216 158,228" fill="none" stroke="#c9d5e1" stroke-width=".5"/>
+    <g fill="#6b7f4f" stroke="#4d5c38" stroke-width=".4">
+      <ellipse cx="137" cy="186" rx="7.5" ry="2.6" transform="rotate(160 137 186)"/><ellipse cx="165" cy="186" rx="7.5" ry="2.6" transform="rotate(20 165 186)"/>
+      <ellipse cx="143" cy="196" rx="6" ry="2.3" transform="rotate(120 143 196)"/><ellipse cx="159" cy="196" rx="6" ry="2.3" transform="rotate(60 159 196)"/>
+      <ellipse cx="151" cy="170" rx="5.5" ry="2" transform="rotate(90 151 170)"/>
+    </g>
+    <use href="#rose" transform="translate(139.5,190) scale(.75)"/><use href="#rose" transform="translate(162.5,190) scale(.75)"/>
+    <use href="#rose" transform="translate(151,174) scale(.75)"/>
+    <use href="#rose" transform="translate(144.5,180)"/><use href="#rose" transform="translate(157.5,179.5)"/>
+    <use href="#rose" transform="translate(151,188.5) scale(1.05)"/>
+    <g fill="#fff" stroke="#d6cdb8" stroke-width=".3"><circle cx="135" cy="181" r="1.1"/><circle cx="167" cy="180" r="1.1"/><circle cx="141" cy="173" r="1"/><circle cx="161" cy="172" r="1"/><circle cx="147" cy="197" r="1"/><circle cx="156" cy="197" r="1"/></g>
+    <!-- bride head, tilted toward groom -->
+    <g transform="rotate(-7 151 82)">
+      <ellipse cx="151" cy="57" rx="12" ry="7" fill="#241510"/>
+      <g fill="#fffdf8" stroke="#d6cdb8" stroke-width=".3"><circle cx="139.5" cy="56" r="1.7"/><circle cx="142" cy="51.5" r="1.7"/><circle cx="147" cy="49.5" r="1.7"/><circle cx="152.5" cy="49.2" r="1.7"/><circle cx="158" cy="50.8" r="1.7"/><circle cx="161.8" cy="54.5" r="1.7"/></g>
+      <ellipse cx="151" cy="82" rx="13" ry="16.5" fill="url(#skin)" stroke="#7b4a30" stroke-width=".5"/>
+      <path d="M137.5,84C135,62 145,59 151,59 158,59 167,62 164.5,84 163,72 158,68 151,68.5 144,68 139,72 137.5,84Z" fill="#241510"/>
+      <path d="M151,59.5V69" stroke="#c9a13f" stroke-width=".8"/>
+      <path d="M140,74Q145,69.5 151,69.5 157,69.5 162,74" fill="none" stroke="#c9a13f" stroke-width=".6"/>
+      <circle cx="151" cy="71.6" r="1.8" fill="url(#gold)"/><circle cx="151" cy="71.6" r=".7" fill="#8c1d2f"/>
+      <path d="M137.8,86V89.5M164.2,86V89.5" stroke="#c9a13f" stroke-width=".6"/>
+      <path d="M136,89.5Q137.8,93.5 139.6,89.5ZM162.4,89.5Q164.2,93.5 166,89.5Z" fill="url(#gold)"/>
+      <g fill="none" stroke="#241510" stroke-linecap="round"><path d="M143,76Q146,74.5 149,75.8M153,75.8Q156,74.5 159,76" stroke-width=".9"/><path d="M143.5,80Q146.2,81.6 149,80M153,80Q155.8,81.6 158.5,80" stroke-width="1.3"/></g>
+      <path d="M151.8,81Q153.5,87 151,88.5" fill="none" stroke="#7b4a30" stroke-width=".7"/>
+      <ellipse cx="144.5" cy="88" rx="3" ry="2" fill="#d97a7a" opacity=".2"/><ellipse cx="157.5" cy="88" rx="3" ry="2" fill="#d97a7a" opacity=".2"/>
+      <path d="M147.6,92.4Q151,90.8 154.4,92.4 151,95.2 147.6,92.4Z" fill="#a8435a"/>
+    </g>
+  </g>
+</svg>
+
+<main class="content" contenteditable="true" spellcheck="false">
+  <header>
+    <h1 class="foil">ශුභ විවාහ මංගල්&zwj;යය</h1>
+    <p class="tag">The Wedding Celebration</p>
+  </header>
+
+  <section class="si">
+    <h2 class="si">මංගල ආරාධනය</h2>
+    <svg class="divider" viewBox="0 0 120 12"><use href="#divider"/></svg>
+    <p class="names si"><span>[මනාලයාගේ නම]</span><svg class="heart" viewBox="0 0 24 22"><use href="#heart"/></svg><span>[මනාලියගේ නම]</span></p>
+    <div class="parents si">
+      <p><b>[පියාගේ නම]</b> මහතා සහ<br><b>[මවගේ නම]</b> මහත්මියගේ<br>ආදරණීය පුත්</p>
+      <p><b>[පියාගේ නම]</b> මහතා සහ<br><b>[මවගේ නම]</b> මහත්මියගේ<br>ආදරණීය දියණිය</p>
+    </div>
+    <p class="msg si">අපගේ දරුවන්ගේ විවාහ මංගල්&zwj;යයට සහභාගී වී ඔවුන්ට සුබ පතන ලෙස<br>ඔබට ගෞරවයෙන් ආරාධනා කරමු.</p>
+  </section>
+
+  <svg class="divider wide" viewBox="0 0 200 20"><use href="#lotusdiv"/></svg>
+
+  <section class="en">
+    <h2 class="en">Wedding Invitation</h2>
+    <svg class="divider" viewBox="0 0 120 12"><use href="#divider"/></svg>
+    <p class="names en"><span>[Groom's Name]</span><svg class="heart" viewBox="0 0 24 22"><use href="#heart"/></svg><span>[Bride's Name]</span></p>
+    <div class="parents en">
+      <p>Beloved son of<br><b>Mr. [Father's Name]</b><br><b>&amp; Mrs. [Mother's Name]</b></p>
+      <p>Beloved daughter of<br><b>Mr. [Father's Name]</b><br><b>&amp; Mrs. [Mother's Name]</b></p>
+    </div>
+    <p class="msg en">We respectfully request the honour of your presence at the wedding of our children,<br>to share in their joy and bless them with your good wishes.</p>
+  </section>
+
+  <div class="details">
+    <dl class="si">
+      <dt>දිනය</dt><dd>[දිනය] · [දවස]</dd>
+      <dt>වේලාව</dt><dd>[වේලාව]</dd>
+      <dt>ස්ථානය</dt><dd>[ස්ථානය]</dd>
+    </dl>
+    <span class="vline"></span>
+    <dl class="en">
+      <dt>DATE</dt><dd>[Day], [Date]</dd>
+      <dt>TIME</dt><dd>[Time]</dd>
+      <dt>VENUE</dt><dd>[Venue]</dd>
+    </dl>
+  </div>
+</main>
+</div>
+
+<script>
+// Draws a layered lotus mandala into <g id>, centred at (cx,cy), radius R (mm).
+function mandala(id, cx, cy, R, op = 1) {
+  const s = R / 42, out = [], TAU = 2 * Math.PI;
+  const P = (r, a) => [cx + r * s * Math.sin(a), cy - r * s * Math.cos(a)].map(v => v.toFixed(2));
+  const pt = (r, a) => P(r, a).join(',');
+  const sw = w => `stroke-width="${(w * s).toFixed(2)}"`;
+  const petal = (r1, r2, a, w) => { const d = r2 - r1;
+    return `M${pt(r1,a)}C${pt(r1+d*.25,a+w)} ${pt(r1+d*.7,a+w*.8)} ${pt(r2,a)}C${pt(r1+d*.7,a-w*.8)} ${pt(r1+d*.25,a-w)} ${pt(r1,a)}Z`; };
+  const ring = (n, r1, r2, wf, off, attrs) => { let d = '';
+    for (let i = 0; i < n; i++) d += petal(r1, r2, (i + off) * TAU / n, wf * Math.PI / n);
+    out.push(`<path d="${d}" ${attrs}/>`); };
+  const circ = (r, attrs) => out.push(`<circle cx="${cx}" cy="${cy}" r="${(r * s).toFixed(2)}" ${attrs}/>`);
+  const dots = (n, r, dr, fill) => { let h = '';
+    for (let i = 0; i < n; i++) { const [x, y] = P(r, i * TAU / n); h += `<circle cx="${x}" cy="${y}" r="${(dr * s).toFixed(2)}"/>`; }
+    out.push(`<g fill="${fill}">${h}</g>`); };
+
+  circ(42.4, 'fill="#fdf8ec"');
+  ring(32, 33.5, 42, 1.05, 0, `fill="#fbf3df" stroke="#b8892b" ${sw(.35)}`);
+  ring(32, 35, 40, .5, 0, `fill="#ead7a8" stroke="#a0522d" ${sw(.15)}`);
+  circ(33.5, `fill="#fdf8ec" stroke="#b8892b" ${sw(.5)}`);
+  circ(32.3, `fill="none" stroke="#b8892b" ${sw(.2)}`);
+  dots(48, 31.2, .38, '#a0522d');
+  ring(16, 19.5, 30, 1, .5, `fill="#f1e2bb" stroke="#b8892b" ${sw(.3)}`);
+  ring(16, 19.5, 30, .95, 0, `fill="#f7ebe6" stroke="#6e1423" ${sw(.3)}`);
+  ring(16, 21.5, 27.5, .45, 0, `fill="#7a1626" stroke="#c9a13f" ${sw(.15)}`);
+  circ(19.5, `fill="#fdf8ec" stroke="#b8892b" ${sw(.5)}`);
+  ring(12, 10.5, 17, .9, .5, `fill="#fbf3df" stroke="#b8892b" ${sw(.2)}`);
+  ring(12, 10.5, 19, .8, 0, `fill="#e9cfa0" stroke="#a0522d" ${sw(.25)}`);
+  circ(10.5, `fill="#fdf8ec" stroke="#b8892b" ${sw(.45)}`);
+  dots(24, 9.4, .32, '#b8892b');
+  ring(8, 2.5, 8.3, 1.1, 0, `fill="#7a1626" stroke="#c9a13f" ${sw(.25)}`);
+  circ(2.6, 'fill="url(#gold)"');
+  document.getElementById(id).innerHTML = out[0] + `<g opacity="${op}">${out.slice(1).join('')}</g>`;
+}
+mandala('m-top', 105, 6, 42);
+mandala('m-bot', 105, 290, 66, .6);
+</script>
+</body>
+</html>
