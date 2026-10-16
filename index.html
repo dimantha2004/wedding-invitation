@@ -150,8 +150,9 @@ const C = {
   poruwa:{ si:'[වේලාව]', en:'[Time]' },
   event: { si:'විවාහ මංගල්‍යය සහ පෝරුවේ චාරිත්‍රය', en:'Wedding Reception & Poruwa Ceremony' },
   after: { si:'අනතුරුව පිළිගැනීම සහ දිවා භෝජන සංග්‍රහය', en:'Reception & Lunch to Follow' },
-  venue: { name:{ si:'[ශාලාවේ නම]', en:'[Venue Name]' }, address:{ si:'[ලිපිනය]', en:'[Address]' },
-           map:'' },                       // Google Maps search text, e.g. 'Cinnamon Lakeside Colombo' — empty hides the map
+  venue: { name:{ si:'කැපිටල් රිසෝට් ඉන්', en:'Capital Resort Inn' }, address:{ si:'බිබිල පාර, හුලංදාව, මොණරාගල', en:'Bibila Road, Hulandawa, Monaragala' },
+           map:'Capital Resort Inn, Monaragala',   // Google Maps search text for the embedded map — empty hides the map
+           mapUrl:'https://www.google.com/maps/place/capital+resort+inn+monaragala/data=!4m2!3m1!1s0x3ae45a97abb60297:0x7c59d6a04f561a14' },  // "View on map" opens this exact place
   gallery: [],                             // e.g. ['photos/1.jpg','photos/2.jpg','photos/3.jpg'] — empty hides the gallery
   music: '',                               // e.g. 'music.mp3' — empty hides the music button
 };
@@ -535,7 +536,7 @@ else { $('#gallery').hidden = true; $('[data-go=gallery]').hidden = true; }
 if (C.venue.map) {
   const q = encodeURIComponent(C.venue.map);
   $('#map').src = `https://maps.google.com/maps?q=${q}&z=15&output=embed`;
-  $('#maplink').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  $('#maplink').href = C.venue.mapUrl || `https://www.google.com/maps/search/?api=1&query=${q}`;
 } else { $('#map').hidden = true; $('#maplink').hidden = true; }
 
 // Call buttons
