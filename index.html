@@ -69,6 +69,7 @@
   html[lang=si] .parents p:not(.nm) { font-size:15px; line-height:1.6; }
   html[lang=si] .parents .nm { font-size:22px; }
   .couple { display:block; width:58%; margin:18px auto -4px; filter:drop-shadow(0 8px 14px rgba(90,60,20,.18)); }
+  img.couple { width:82%; height:auto; }
   .hero .base { display:block; width:72%; margin:0 auto; }
   .occasion { margin-top:22px; font-size:17px; color:var(--soft); }
   .date { margin:18px 0 8px; }
@@ -155,6 +156,7 @@ const C = {
            mapUrl:'https://www.google.com/maps/place/capital+resort+inn+monaragala/data=!4m2!3m1!1s0x3ae45a97abb60297:0x7c59d6a04f561a14' },  // "View on map" opens this exact place
   gallery: [],                             // e.g. ['photos/1.jpg','photos/2.jpg','photos/3.jpg'] — empty hides the gallery
   music: '',                               // e.g. 'music.mp3' — empty hides the music button
+  couple: 'couple.png',                    // bride & groom picture under the names — if the file is missing, the drawn couple is shown
 };
 </script>
 <!-- ================================================================== -->
@@ -218,6 +220,7 @@ const C = {
     </div>
     <div class="guest rv"><span data-t="dear"></span><strong data-t="guestName"></strong><span data-t="guestLine"></span></div>
     <div class="rv">
+      <img class="couple" id="coupleImg" alt="Bride and groom" hidden>
       <svg class="couple" viewBox="28 24 172 316" role="img" aria-label="Bride and groom illustration">
         <g stroke-linejoin="round" stroke-linecap="round">
           <!-- groom -->
@@ -538,6 +541,13 @@ if (C.venue.map) {
   $('#map').src = `https://maps.google.com/maps?q=${q}&z=15&output=embed`;
   $('#maplink').href = C.venue.mapUrl || `https://www.google.com/maps/search/?api=1&query=${q}`;
 } else { $('#map').hidden = true; $('#maplink').hidden = true; }
+
+// Couple picture: swap out the drawn couple only once the image has actually loaded
+if (C.couple) {
+  const im = $('#coupleImg');
+  im.onload = () => { im.hidden = false; $('svg.couple').setAttribute('hidden', ''); };
+  im.src = C.couple;
+}
 
 // Call buttons
 [['#call-g', g.phone], ['#call-b', b.phone]].forEach(([id, p]) => p ? $(id).href = 'tel:' + p : $(id).hidden = true);
