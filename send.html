@@ -87,6 +87,29 @@ const WHO = { 1: ['ඔබට', 'you'], 2: ['ඔබ දෙදෙනාට', 'both
 // The invitation lives next to this page (index.html).
 const base = new URL(location.protocol.startsWith('http') ? './' : 'index.html', location.href);
 let link = '';
+// WhatsApp message sent with each link ("English only" sends just the English one)
+const MSG_SI = link => `💍❤️ විවාහ මංගල්‍යයට ආරාධනායි! ❤️💍
+
+අපගේ ජීවිතයේ සුවිශේෂී දිනය වන විවාහ මංගල්‍යය ඔබ සමඟ සතුටින් සැමරීමට අපි ඉතා ආදරයෙන් ආරාධනා කරමු.
+
+✨ අපගේ විවාහ ආරාධනා පත්‍රය:
+${link}
+
+අපගේ මේ සුන්දර මොහොතට ඔබගේ පැමිණීම සහ ආශීර්වාදය අපට මහත් සතුටක් වනු ඇත. ❤️
+
+ආදරයෙන්,
+දිමුතු & නෙත්මි 💕`;
+const MSG_EN = link => `💍 Wedding Invitation ❤️
+
+We’re delighted to invite you to celebrate our wedding with us! Your presence and blessings would mean so much to us on our special day.
+
+✨ Wedding Invitation:
+${link}
+
+We can’t wait to celebrate this beautiful moment with you and create wonderful memories together. ❤️
+
+With love,
+Dimuthu & Nethmi 💕`;
 const b64url = s => btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
 function update() {
@@ -104,7 +127,7 @@ function update() {
   $('#pEn').textContent = `we cordially invite ${WHO[t][1]}`;
   $('#link').textContent = link || 'Enter a name to create the link · නමක් ඇතුළත් කරන්න';
   $('#open').href = $('#wa').href = '#';
-  if (ok) { $('#open').href = link; $('#wa').href = 'https://wa.me/?text=' + encodeURIComponent(link); }
+  if (ok) { $('#open').href = link; $('#wa').href = 'https://wa.me/?text=' + encodeURIComponent(only ? MSG_EN(link) : MSG_SI(link) + '\n\n' + MSG_EN(link)); }
   ['#copy', '#wa', '#open'].forEach(id => $(id).setAttribute('aria-disabled', !ok));
   $('#copy').textContent = 'Copy link';
 }
