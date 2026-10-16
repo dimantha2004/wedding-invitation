@@ -29,6 +29,7 @@
   .opts span small { font-size:13px; opacity:.8; }
   .opts input:checked + span { color:#fff; background:linear-gradient(135deg,#c2913a,#8f6420); border-color:transparent; }
   .opts input:focus-visible + span { outline:2px solid var(--gold); outline-offset:2px; }
+  .opts input:disabled + span { opacity:.6; cursor:default; }
   .preview { text-align:center; padding:16px 10px; border-block:1px solid var(--line); display:grid; gap:12px; }
   .preview p { font-size:15px; color:var(--soft); line-height:1.4; }
   .preview strong { display:block; font-size:23px; font-weight:600; color:var(--gold-d); }
@@ -63,7 +64,7 @@
         <label><input type="radio" name="t" value="1" checked><span>You — one person <small class="si">ඔබට</small></span></label>
         <label><input type="radio" name="t" value="2"><span>Both of you — two people <small class="si">ඔබ දෙදෙනාට</small></span></label>
         <label><input type="radio" name="t" value="3"><span>You all — whole family <small class="si">ඔබ සැමට</small></span></label>
-        <label style="margin-top:6px"><input type="checkbox" id="enOnly"><span>English only <small>no Sinhala, no language switch</small></span></label>
+        <label style="margin-top:6px"><input type="checkbox" id="enOnly"><span>Invitation in English only <small>no Sinhala, no language switch</small></span></label>
       </div>
     </fieldset>
 
@@ -73,6 +74,7 @@
     </div>
 
     <p class="link" id="link"></p>
+    <div class="opts"><label><input type="checkbox" id="msgEn"><span>WhatsApp message in English only <small class="si">පණිවිඩය ඉංග්‍රීසියෙන් පමණි</small></span></label></div>
     <div class="btns">
       <button class="btn wide" id="copy" type="button">Copy link</button>
       <a class="btn wa" id="wa" target="_blank" rel="noopener">WhatsApp</a>
@@ -127,7 +129,11 @@ function update() {
   $('#pEn').textContent = `we cordially invite ${WHO[t][1]}`;
   $('#link').textContent = link || 'Enter a name to create the link · නමක් ඇතුළත් කරන්න';
   $('#open').href = $('#wa').href = '#';
-  if (ok) { $('#open').href = link; $('#wa').href = 'https://wa.me/?text=' + encodeURIComponent(only ? MSG_EN(link) : MSG_SI(link) + '\n\n' + MSG_EN(link)); }
+  // message language is its own choice, but an English-only invitation always gets the English message
+  const msgEn = $('#msgEn');
+  if (only) msgEn.checked = true;
+  msgEn.disabled = only;
+  if (ok) { $('#open').href = link; $('#wa').href = 'https://wa.me/?text=' + encodeURIComponent(msgEn.checked ? MSG_EN(link) : MSG_SI(link)); }
   ['#copy', '#wa', '#open'].forEach(id => $(id).setAttribute('aria-disabled', !ok));
   $('#copy').textContent = 'Copy link';
 }

@@ -55,9 +55,9 @@
   @keyframes twinkle { 0%, 100% { opacity:0; transform:scale(.3); } 50% { opacity:.95; transform:scale(1.3); } }
   @keyframes rise { from { transform:translateY(105vh); } to { transform:translateY(-140px); } }
   @keyframes drift { from { transform:translate(0, 0) rotate(0deg); } to { transform:translate(var(--x), calc(100vh + 80px)) rotate(var(--r)); } }
-  /* gold light burst from the Open button */
-  .flash { position:fixed; inset:0; max-width:var(--col); margin:0 auto; z-index:65; overflow:hidden; pointer-events:none; }
-  .flash i { position:absolute; border-radius:50%; background:radial-gradient(circle, #fffef8 0%, #fdf3d6 28%, #f3dc9c 52%, rgba(226,190,110,0) 70%); }
+  /* ring zoom: the rings graphic flying toward the viewer from the Open button */
+  .zoom { position:fixed; inset:0; max-width:var(--col); margin:0 auto; z-index:65; overflow:hidden; pointer-events:none; }
+  .zoom svg { position:absolute; display:block; opacity:0; }
   .shower { position:fixed; inset:0; max-width:var(--col); margin:0 auto; pointer-events:none; z-index:70; overflow:hidden; }
   .shower div { position:absolute; top:0; filter:drop-shadow(0 2px 2px rgba(90,20,30,.18)); }
   .shower svg { display:block; width:100%; height:100%; }
@@ -584,18 +584,28 @@ function ambient() {
   $('#ambient').classList.add('on');
 }
 
-// Gold light burst: warm light floods out from the Open button (0.38s), the splash vanishes under it, then the light fades (0.45s)
-function lightBurst(atPeak) {
-  const wrap = Object.assign(document.createElement('div'), { className: 'flash' }), glow = document.createElement('i');
-  wrap.append(glow);
+// Ring zoom (0.95s): the rings rise from the Open button and fly toward the viewer, zooming on the ring with the diamond;
+// the splash gets a matching hole so the invitation shows through the middle of that ring until it fills the screen.
+function ringZoom(atOpen, atEnd) {
+  const splash = $('#splash'), box = splash.getBoundingClientRect(), btn = $('#open').getBoundingClientRect();
+  const W = 96, H = W * .75, hole = 7.6 / 40 * W;       // rings graphic is 40×30; the diamond ring is centred at (25,19), opening radius ≈ 7.6
+  const cx = btn.left + btn.width / 2 - box.left, cy = btn.top + btn.height / 2 - box.top;
+  const sEnd = Math.hypot(Math.max(cx, box.width - cx), Math.max(cy, box.height - cy)) / hole * 1.1;   // opening reaches the farthest corner
+  const wrap = Object.assign(document.createElement('div'), { className: 'zoom', innerHTML: RINGS }), ring = wrap.firstChild;
+  Object.assign(ring.style, { left: `${cx - 25 / 40 * W}px`, top: `${cy - 19 / 30 * H}px`, width: `${W}px`, height: `${H}px`, transformOrigin: `${25 / 40 * 100}% ${19 / 30 * 100}%` });
   document.body.append(wrap);
-  const box = wrap.getBoundingClientRect(), btn = $('#open').getBoundingClientRect();
-  const x = btn.left + btn.width / 2 - box.left, y = btn.top + btn.height / 2 - box.top;
-  const r = Math.hypot(Math.max(x, box.width - x), Math.max(y, box.height - y)) / .52;   // gold stop reaches the farthest corner
-  Object.assign(glow.style, { left: `${x - r}px`, top: `${y - r}px`, width: `${2 * r}px`, height: `${2 * r}px` });
-  glow.animate([{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { duration: 380, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' }).finished
-    .then(() => { atPeak(); return wrap.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, easing: 'ease-out', fill: 'forwards' }).finished; })
-    .then(() => wrap.remove());
+  const T = 950, t0 = performance.now();
+  let opened = false;
+  requestAnimationFrame(function frame(now) {
+    const p = Math.min(1, (now - t0) / T), s = sEnd ** (p * p);          // exponential zoom that speeds up: "flying toward you"
+    ring.style.transform = `scale(${s})`;
+    ring.style.opacity = Math.max(0, Math.min(1, p * 6, (1 - p) / .25));
+    splash.style.webkitMaskImage = splash.style.maskImage = `radial-gradient(circle at ${cx}px ${cy}px, transparent ${hole * s}px, #000 ${hole * s + 1}px)`;
+    if (!opened && p > .35) { opened = true; atOpen(); }
+    if (p < 1) return requestAnimationFrame(frame);
+    wrap.remove();
+    atEnd();
+  });
 }
 
 $('#open').onclick = () => {
@@ -604,13 +614,13 @@ $('#open').onclick = () => {
   $('#ui').hidden = false;
   music(true);
   const reveal = () => {
-    $('#splash').classList.add('gone');
     shower();
     startReveal();
     setTimeout(ambient, 5000);                // petals are mostly down: start the looping background
   };
-  if (stillMotion()) return reveal();
-  lightBurst(() => { $('#splash').style.transition = 'none'; reveal(); });   // splash disappears while hidden by the light
+  const hideSplash = () => { $('#splash').style.transition = 'none'; $('#splash').classList.add('gone'); };
+  if (stillMotion()) { $('#splash').classList.add('gone'); return reveal(); }
+  ringZoom(reveal, hideSplash);
 };
 
 // Reveal on scroll + active dock item
