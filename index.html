@@ -469,6 +469,8 @@ T.guestLine = both(`${who[0]} සාදරයෙන් ආරාධනා කර
 if (!gEn) $$('.guest').forEach(e => e.hidden = true);
 
 let lang = 'si';
+// Link made with "English only" (&l=en): show English and hide the language switch
+if (q.get('l') === 'en') { lang = 'en'; $$('.lang').forEach(e => e.hidden = true); }
 function setLang(l) {
   lang = l;
   document.documentElement.lang = l;

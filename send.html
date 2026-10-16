@@ -63,11 +63,12 @@
         <label><input type="radio" name="t" value="1" checked><span>You — one person <small class="si">ඔබට</small></span></label>
         <label><input type="radio" name="t" value="2"><span>Both of you — two people <small class="si">ඔබ දෙදෙනාට</small></span></label>
         <label><input type="radio" name="t" value="3"><span>You all — whole family <small class="si">ඔබ සැමට</small></span></label>
+        <label style="margin-top:6px"><input type="checkbox" id="enOnly"><span>English only <small>no Sinhala, no language switch</small></span></label>
       </div>
     </fieldset>
 
     <div class="preview">
-      <p class="si">ආදරණීය<strong id="pSiName"></strong><span id="pSi"></span></p>
+      <p class="si" id="pSiBox">ආදරණීය<strong id="pSiName"></strong><span id="pSi"></span></p>
       <p>Dear<strong id="pEnName"></strong><span id="pEn"></span></p>
     </div>
 
@@ -88,12 +89,14 @@ const base = new URL(location.protocol.startsWith('http') ? './' : 'index.html',
 let link = '';
 
 function update() {
-  const en = $('#en').value.trim(), si = $('#si').value.trim(), t = $('[name=t]:checked').value;
+  const en = $('#en').value.trim(), si = $('#si').value.trim(), t = $('[name=t]:checked').value, only = $('#enOnly').checked;
   const u = new URL(base);
   if (en) u.searchParams.set('n', en);
-  if (si) u.searchParams.set('s', si);
+  if (si && !only) u.searchParams.set('s', si);
   u.searchParams.set('t', t);
-  const ok = !!(en || si);
+  if (only) u.searchParams.set('l', 'en');
+  const ok = only ? !!en : !!(en || si);   // English-only needs the English name
+  $('#pSiBox').hidden = only;
   link = ok ? u.href : '';
   $('#pSiName').textContent = si || en || '…';
   $('#pEnName').textContent = en || si || '…';
