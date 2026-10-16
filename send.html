@@ -87,14 +87,14 @@ const WHO = { 1: ['ඔබට', 'you'], 2: ['ඔබ දෙදෙනාට', 'both
 // The invitation lives next to this page (index.html).
 const base = new URL(location.protocol.startsWith('http') ? './' : 'index.html', location.href);
 let link = '';
+const b64url = s => btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
 function update() {
   const en = $('#en').value.trim(), si = $('#si').value.trim(), t = $('[name=t]:checked').value, only = $('#enOnly').checked;
+  // Short link: "?i=" + base64url of "type[e]|English name|Sinhala name" (index.html unpacks it)
+  const clean = v => v.replace(/\|/g, ' ');
   const u = new URL(base);
-  if (en) u.searchParams.set('n', en);
-  if (si && !only) u.searchParams.set('s', si);
-  u.searchParams.set('t', t);
-  if (only) u.searchParams.set('l', 'en');
+  u.searchParams.set('i', b64url(`${t}${only ? 'e' : ''}|${clean(en)}|${only ? '' : clean(si)}`));
   const ok = only ? !!en : !!(en || si);   // English-only needs the English name
   $('#pSiBox').hidden = only;
   link = ok ? u.href : '';
