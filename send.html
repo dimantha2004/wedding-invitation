@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="si">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Send Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;600;700&family=Cinzel:wght@500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#a8782a; --gold-d:#7a5a18; --gold-l:#c9a45a; --soft:#8c7656; --card:#fdf9ef; --line:rgba(168,120,42,.45); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { min-height:100vh; padding:32px 16px 48px; color:var(--gold-d); font-family:'Cormorant Garamond','Abhaya Libre',serif; background:radial-gradient(ellipse at 50% 20%, #fbf6ea, #efe3c8); }
+  .si { font-family:'Abhaya Libre',serif; }
+  main { max-width:440px; margin:0 auto; }
+  header { text-align:center; margin-bottom:22px; }
+  .eyebrow { font:500 10.5px 'Cinzel',serif; letter-spacing:.38em; color:var(--gold-l); }
+  h1 { font-weight:500; font-size:32px; margin-top:8px; }
+  h1 small { display:block; font:600 18px 'Abhaya Libre',serif; color:var(--soft); }
+  .card { background:var(--card); border:1px solid rgba(201,164,90,.35); border-radius:18px; box-shadow:0 10px 30px rgba(122,90,24,.12); padding:22px 20px; display:grid; gap:18px; }
+  label, legend { display:block; font-size:15px; color:var(--soft); margin-bottom:6px; }
+  input[type=text] { width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(201,164,90,.55); background:#fffdf7; font:inherit; font-size:18px; color:var(--gold-d); outline-color:var(--gold); }
+  fieldset { border:0; }
+  .opts { display:grid; gap:8px; }
+  .opts label { margin:0; }
+  .opts input { position:absolute; opacity:0; }
+  .opts span { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; border-radius:12px; border:1px solid rgba(201,164,90,.55); font-size:17px; color:var(--gold-d); cursor:pointer; transition:.2s; }
+  .opts span small { font-size:13px; opacity:.8; }
+  .opts input:checked + span { color:#fff; background:linear-gradient(135deg,#c2913a,#8f6420); border-color:transparent; }
+  .opts input:focus-visible + span { outline:2px solid var(--gold); outline-offset:2px; }
+  .preview { text-align:center; padding:16px 10px; border-block:1px solid var(--line); display:grid; gap:12px; }
+  .preview p { font-size:15px; color:var(--soft); line-height:1.4; }
+  .preview strong { display:block; font-size:23px; font-weight:600; color:var(--gold-d); }
+  .link { font-size:13px; word-break:break-all; color:var(--soft); background:#f6eedb; padding:10px 12px; border-radius:10px; }
+  .btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .btn { display:flex; justify-content:center; align-items:center; padding:13px 10px; border:0; border-radius:40px; font:inherit; font-size:17px; font-weight:600; color:#fff; text-decoration:none; cursor:pointer; background:linear-gradient(135deg,#c2913a,#8f6420); box-shadow:0 6px 16px rgba(122,90,24,.3); }
+  .btn.alt { color:var(--gold-d); background:#fffdf7; border:1px solid rgba(201,164,90,.6); box-shadow:none; }
+  .btn.wa { background:#25a35a; box-shadow:0 6px 16px rgba(37,163,90,.3); }
+  .btns .wide { grid-column:1 / -1; }
+  .btn[aria-disabled=true] { opacity:.45; pointer-events:none; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">SEND INVITATION</p>
+    <h1>Invite a Guest<small>ආරාධනා යවන්න</small></h1>
+  </header>
+
+  <form class="card" id="f" onsubmit="return false">
+    <div>
+      <label for="en">Guest name (English) · <span class="si">අමුත්තාගේ නම (ඉංග්‍රීසි)</span></label>
+      <input type="text" id="en" placeholder="e.g. Nimal / Perera Family" autocomplete="off">
+    </div>
+    <div>
+      <label for="si">Guest name (Sinhala, optional) · <span class="si">සිංහලෙන් (අවශ්‍ය නම්)</span></label>
+      <input type="text" id="si" class="si" placeholder="උදා: නිමල් / පෙරේරා පවුල" autocomplete="off">
+    </div>
+    <fieldset>
+      <legend>Invite as · <span class="si">ආරාධනා කරන ආකාරය</span></legend>
+      <div class="opts">
+        <label><input type="radio" name="t" value="1" checked><span>You — one person <small class="si">ඔබට</small></span></label>
+        <label><input type="radio" name="t" value="2"><span>Both of you — two people <small class="si">ඔබ දෙදෙනාට</small></span></label>
+        <label><input type="radio" name="t" value="3"><span>You all — whole family <small class="si">ඔබ සැමට</small></span></label>
+      </div>
+    </fieldset>
+
+    <div class="preview">
+      <p class="si">ආදරණීය<strong id="pSiName"></strong><span id="pSi"></span></p>
+      <p>Dear<strong id="pEnName"></strong><span id="pEn"></span></p>
+    </div>
+
+    <p class="link" id="link"></p>
+    <div class="btns">
+      <button class="btn wide" id="copy" type="button">Copy link</button>
+      <a class="btn wa" id="wa" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn alt" id="open" target="_blank" rel="noopener">Preview</a>
+    </div>
+  </form>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const WHO = { 1: ['ඔබට', 'you'], 2: ['ඔබ දෙදෙනාට', 'both of you'], 3: ['ඔබ සැමට', 'you all'] };
+// The invitation lives next to this page (index.html).
+const base = new URL(location.protocol.startsWith('http') ? './' : 'index.html', location.href);
+let link = '';
+
+function update() {
+  const en = $('#en').value.trim(), si = $('#si').value.trim(), t = $('[name=t]:checked').value;
+  const u = new URL(base);
+  if (en) u.searchParams.set('n', en);
+  if (si) u.searchParams.set('s', si);
+  u.searchParams.set('t', t);
+  const ok = !!(en || si);
+  link = ok ? u.href : '';
+  $('#pSiName').textContent = si || en || '…';
+  $('#pEnName').textContent = en || si || '…';
+  $('#pSi').textContent = `${WHO[t][0]} සාදරයෙන් ආරාධනා කරමු`;
+  $('#pEn').textContent = `we cordially invite ${WHO[t][1]}`;
+  $('#link').textContent = link || 'Enter a name to create the link · නමක් ඇතුළත් කරන්න';
+  $('#open').href = $('#wa').href = '#';
+  if (ok) { $('#open').href = link; $('#wa').href = 'https://wa.me/?text=' + encodeURIComponent(link); }
+  ['#copy', '#wa', '#open'].forEach(id => $(id).setAttribute('aria-disabled', !ok));
+  $('#copy').textContent = 'Copy link';
+}
+$('#f').addEventListener('input', update);
+
+$('#copy').onclick = async () => {
+  try { await navigator.clipboard.writeText(link); }
+  catch { const r = document.createRange(); r.selectNodeContents($('#link')); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand('copy'); }
+  $('#copy').textContent = 'Copied! · පිටපත් විය ✓';
+};
+
+update();
+</script>
+</body>
+</html>

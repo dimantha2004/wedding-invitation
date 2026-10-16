@@ -55,6 +55,10 @@
   html[lang=si] .script { font-family:'Abhaya Libre',serif; font-style:normal; font-weight:600; font-size:38px; }
   #splash .script { font-size:34px; }
   .pair { font-size:22px; letter-spacing:.06em; color:var(--gold); }
+  .guest { display:flex; flex-direction:column; align-items:center; gap:3px; max-width:320px; margin:0 auto; padding:12px 26px; border-block:1px solid var(--line); }
+  .guest span { font-size:15px; color:var(--soft); }
+  .guest strong { font-size:25px; font-weight:600; line-height:1.25; color:var(--gold-d); }
+  .hero .guest { margin-top:22px; }
 
   /* hero */
   .hero { padding-top:0; }
@@ -198,6 +202,7 @@ const C = {
   <svg class="orn" viewBox="0 0 200 62" aria-hidden="true"><use href="#lotus"/></svg>
   <h1 class="script" data-t="invited"></h1>
   <p class="pair" data-t="pair"></p>
+  <div class="guest"><span data-t="dear"></span><strong data-t="guestName"></strong><span data-t="guestLine"></span></div>
   <button class="btn" id="open" data-t="open"></button>
   <div class="lang"><button data-l="si">සිං</button><button data-l="en">EN</button></div>
 </div>
@@ -210,6 +215,7 @@ const C = {
       <div><p data-t="g1"></p><p data-t="g2"></p><p data-t="g3"></p><p class="nm" data-t="groom"></p></div>
       <div><p data-t="b1"></p><p data-t="b2"></p><p data-t="b3"></p><p class="nm" data-t="bride"></p></div>
     </div>
+    <div class="guest rv"><span data-t="dear"></span><strong data-t="guestName"></strong><span data-t="guestLine"></span></div>
     <div class="rv">
       <svg class="couple" viewBox="28 24 172 316" role="img" aria-label="Bride and groom illustration">
         <g stroke-linejoin="round" stroke-linecap="round">
@@ -430,6 +436,15 @@ const T = {
   venEyebrow: both('ස්ථානය', 'Location'), venTitle: both('උත්සව ස්ථානය', 'Venue'), viewMap: both('සිතියමෙන් බලන්න', 'View on map'),
   footEyebrow: both('සුබ දිනය', 'Save the Date'), footLove: both('දෙපවුලේම ආදරයෙන්', 'With love, from both our families'),
 };
+
+// Personal greeting from a link made with send.html: ?n=English name&s=Sinhala name&t=1 (you) | 2 (both of you) | 3 (you all)
+const q = new URLSearchParams(location.search);
+const gEn = (q.get('n') || q.get('s') || '').trim(), gSi = (q.get('s') || gEn).trim();
+const who = { 1: ['ඔබට', 'you'], 2: ['ඔබ දෙදෙනාට', 'both of you'], 3: ['ඔබ සැමට', 'you all'] }[q.get('t')] || ['ඔබට', 'you'];
+T.dear = both('ආදරණීය', 'Dear');
+T.guestName = both(gSi, gEn);
+T.guestLine = both(`${who[0]} සාදරයෙන් ආරාධනා කරමු`, `we cordially invite ${who[1]}`);
+if (!gEn) $$('.guest').forEach(e => e.hidden = true);
 
 let lang = 'si';
 function setLang(l) {
