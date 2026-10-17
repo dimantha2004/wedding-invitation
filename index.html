@@ -623,16 +623,13 @@
     }
 
     img.couple {
-      width: calc(100% + 24px);
+      width: 65%;
       max-width: none;
       height: auto;
-      margin: 14px -12px -18px;
-      filter: none;
-      /* fade the photo's edges into the page */
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 6%, #000 80%, transparent);
-      mask-composite: intersect;
+      margin: 14px auto -18px;
+      display: block;
+      filter: drop-shadow(0 8px 14px rgba(90, 60, 20, .18));
+      mix-blend-mode: multiply;
     }
 
     .hero .base {
